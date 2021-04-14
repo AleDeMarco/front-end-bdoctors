@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-ul{
+#search ul{
     list-style: none;
 }
 
@@ -23,7 +23,7 @@ footer ul li a,
 
 footer ul li a:hover,
 .box-bottom-copy a:hover{
-    color:#fff; 
+    color:#fff;
     text-decoration: none;
 }
 
@@ -38,6 +38,6 @@ footer ul li a:hover,
     margin-right: 10px;
 }
 
-nav{
-    border-bottom: 1px solid #fff;
+#search nav{
+    border-bottom: 3px solid #fff;
 }
