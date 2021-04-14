@@ -1,0 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul{
+    list-style: none;
+}
+
+button{
+    color: #fff !important;
+}
+
+footer{
+    color: #59798d;
+}
