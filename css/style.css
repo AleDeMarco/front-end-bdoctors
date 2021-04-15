@@ -41,3 +41,13 @@ footer ul li a:hover,
 #search nav{
     border-bottom: 3px solid #fff;
 }
+
+.dashboard-link{
+    color: #168AAD;
+}
+
+.dashboard-active,
+.dashboard-active:hover,
+.dashboard-link:hover{
+    color: #184E77;
+}
