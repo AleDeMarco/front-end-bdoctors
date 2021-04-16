@@ -14,10 +14,7 @@
 
 </head>
 <body id="search">
-<<<<<<< HEAD
-=======
   <div id="app">
->>>>>>> main
   <section class="jumbo" style="background:linear-gradient(180deg,#4689cf,#21b2d6);">
     <nav class="navbar navbar-expand-lg navbar-light pt-3">
       <div class="container">
@@ -64,6 +61,9 @@
               <option>Da remoto</option>
             </select>
           </div>
+          <div class="form-group col-md-12">
+            <p>Medici trovati: {{ nRisultato }}</p>
+          </div>
         </div>
       </form>
 
@@ -76,140 +76,37 @@
     <img src="img/search/jumbotron_bg.svg" alt="Jumbotron image">
   </section>
   <img src="img/search/jumbotron_wave.svg" alt="Jumbotron image" style="height: 150px; width: 100%; margin-bottom:50px;">
-  <div class="container d-flex flex-wrap justify-content-around">
-
-    <div class="card mb-4" style="width: 30%;" v-for="contact in filtered">
-      <img src="img/common/doctor_avatar.jpg" class="card-img-top" alt="Foto profilo dottore">
-      <div class="card-body">
-        <h5 class="card-title">{{ contact.name }}</h5>
-        <p class="card-text">{{ contact.bio }}</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ contact.indirizzo }}</li>
-        <li class="list-group-item">{{ contact.telefono }}</li>
-        <li class="list-group-item">
+  <div id="results">
+    <div class="container-special">
+      <div class="card-special" v-for="contact in filtered">
+        <img src="img/common/doctor_avatar.jpg" alt="Dottore">
+        <h1>{{ contact.name }}<br>{{ contact.cognome }}</h1>
+        <br>
+        <p>{{ contact.bio }}</p>
+        <br>
+        <div class="card-info">
+          <p><i class="fas fa-map-marker-alt"></i> {{ contact.citta }}</p>
+          <p><i class="fas fa-phone"></i> {{ contact.telefono }}</p>
+        </div>
+        <br>
+        <p>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
           <i class="far fa-star"></i>
-        </li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Scheda dottore</a>
-        <a href="#" class="card-link">Richiedi disponibilità</a>
+        </p>
+        <br><br>
+        <div class="card-btn">
+          <div class="card-btn-link">
+            Scheda dottore
+          </div>
+          <div class="card-btn-link">
+            Richiedi disponibilità
+          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- <div class="card mb-4" style="width: 30%;">
-      <img src="img/common/doctor_avatar.jpg" class="card-img-top" alt="Foto profilo dottore">
-      <div class="card-body">
-        <h5 class="card-title">Nome Cognome</h5>
-        <p class="card-text">Laureato a pieni voti in chirurgia, specializzato in specializzazione e operrante a Milano</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Via Ciao 25, Milano</li>
-        <li class="list-group-item">+39 366 1234567</li>
-        <li class="list-group-item">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Scheda dottore</a>
-        <a href="#" class="card-link">Richiedi disponibilità</a>
-      </div>
-    </div>
-    <div class="card mb-4" style="width: 30%;">
-      <img src="img/common/doctor_avatar.jpg" class="card-img-top" alt="Foto profilo dottore">
-      <div class="card-body">
-        <h5 class="card-title">Nome Cognome</h5>
-        <p class="card-text">Laureato a pieni voti in chirurgia, specializzato in specializzazione e operrante a Milano</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Via Ciao 25, Milano</li>
-        <li class="list-group-item">+39 366 1234567</li>
-        <li class="list-group-item">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Scheda dottore</a>
-        <a href="#" class="card-link">Richiedi disponibilità</a>
-      </div>
-    </div>
-    <div class="card mb-4" style="width: 30%;">
-      <img src="img/common/doctor_avatar.jpg" class="card-img-top" alt="Foto profilo dottore">
-      <div class="card-body">
-        <h5 class="card-title">Nome Cognome</h5>
-        <p class="card-text">Laureato a pieni voti in chirurgia, specializzato in specializzazione e operrante a Milano</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Via Ciao 25, Milano</li>
-        <li class="list-group-item">+39 366 1234567</li>
-        <li class="list-group-item">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Scheda dottore</a>
-        <a href="#" class="card-link">Richiedi disponibilità</a>
-      </div>
-    </div>
-    <div class="card mb-4" style="width: 30%;">
-      <img src="img/common/doctor_avatar.jpg" class="card-img-top" alt="Foto profilo dottore">
-      <div class="card-body">
-        <h5 class="card-title">Nome Cognome</h5>
-        <p class="card-text">Laureato a pieni voti in chirurgia, specializzato in specializzazione e operrante a Milano</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Via Ciao 25, Milano</li>
-        <li class="list-group-item">+39 366 1234567</li>
-        <li class="list-group-item">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Scheda dottore</a>
-        <a href="#" class="card-link">Richiedi disponibilità</a>
-      </div>
-    </div>
-    <div class="card mb-4" style="width: 30%;">
-      <img src="img/common/doctor_avatar.jpg" class="card-img-top" alt="Foto profilo dottore">
-      <div class="card-body">
-        <h5 class="card-title">Nome Cognome</h5>
-        <p class="card-text">Laureato a pieni voti in chirurgia, specializzato in specializzazione e operrante a Milano</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Via Ciao 25, Milano</li>
-        <li class="list-group-item">+39 366 1234567</li>
-        <li class="list-group-item">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
-        </li>
-      </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">Scheda dottore</a>
-        <a href="#" class="card-link">Richiedi disponibilità</a>
-      </div> -->
+      <div class="overlay"></div>
     </div>
   </div>
   <img src="img/search/footer_wave.svg" alt="Footer image" style="height: 150px; width: 100%;">
@@ -310,16 +207,16 @@
               <h5>Support</h5>
             </li>
             <li>
-              <a href="#">Lorem ipsum dolor sit amet</a>
+              <a href="#"><i class="fab fa-cc-visa"></i> Visa</a>
             </li>
             <li>
-              <a href="#">Lorem ipsum dolor sit amet</a>
+              <a href="#"><i class="fab fa-cc-mastercard"></i> Mastercard</a>
             </li>
             <li>
-              <a href="#">Lorem ipsum dolor sit amet</a>
+              <a href="#"><i class="fab fa-cc-paypal"></i> Paypal</a>
             </li>
             <li>
-              <a href="#">Lorem ipsum dolor sit amet</a>
+              <a href="#"><i class="fab fa-cc-apple-pay"></i> Apple pay</a>
             </li>
           </ul>
         </div>

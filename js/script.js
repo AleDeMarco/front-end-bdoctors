@@ -3,81 +3,94 @@ var app = new Vue({
   data: {
     contacts: [
       {
-        name: 'Bernardo Rocco',
+        name: 'Bernardo',
+        cognome: 'Rocco',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Via Del Pozzo 71, Modena',
+        citta: 'Modena',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Herbert Schoenhuber',
+        name: 'Herbert',
+        cognome: 'Schoenhuber',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Via Riccardo Galeazzi 4, Milano',
+        citta: 'Milano',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Claudio Corbellini',
+        name: 'Claudio',
+        cognome: 'Corbellini',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Via Giuseppe Ripamonti 11, Bologna',
+        ciita: 'Bologna',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Patrizia Boni',
+        name: 'Patrizia',
+        cognome: 'Boni',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Via Giovanni Pacini 8, Milano',
+        citta: 'Milano',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Silvia Simonetti',
+        name: 'Silvia',
+        cognome: 'Simonetti',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Via Carlo Freguglia 8a, Milano',
+        citta: 'Milano',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Alberto Vaiarelli',
+        name: 'Alberto',
+        cognome: 'Vaiarelli',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Via Garbini 7, Viterbo',
+        citta: 'Viterbo',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Andrea Lenzi',
+        name: 'Andrea',
+        cognome: 'Lenzi',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Viale del Policlinico 129/A, Roma',
+        citta: 'Roma',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Ernesta Petrangeli',
+        name: 'Ernesta',
+        cognome: 'Petrangeli',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Piazza Lotario 8, Roma',
+        citta: 'Roma',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Annalisa Limosani',
+        name: 'Annalisa',
+        cognome: 'Limosani',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Via Biancamano 33, Firenze',
+        citta: 'Firenze',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Simona Monilari',
+        name: 'Simona',
+        cognome: 'Monilari',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        indirizzo: 'Via Garibaldi 31, Milano',
+        citta: 'Milano',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
     ],
     filtered: [],
-    newFilter: ''
+    newFilter: '',
+    listaCitta: [],
+    nRisultato: 0
   },
   created(){
     this.filtered = this.contacts;
+    this.nRisultato = this.filtered.length;
   },
   methods: {
     filterChat() {
@@ -87,6 +100,7 @@ var app = new Vue({
         if (this.contacts[i].name.includes(this.newFilter)) {
           this.filtered.push(this.contacts[i]);
         }
+        this.nRisultato = this.filtered.length;
       }
     }
   }
