@@ -56,7 +56,7 @@ footer ul li a:hover,
   width: 85%;
   margin: 0 auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 

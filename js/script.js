@@ -3,7 +3,8 @@ var app = new Vue({
   data: {
     contacts: [
       {
-        name: 'Bernardo',
+        name: 'Bernardo Rocco',
+        nome: 'Bernardo',
         cognome: 'Rocco',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
         citta: 'Modena',
@@ -11,7 +12,8 @@ var app = new Vue({
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Herbert',
+        name: 'Herbert Schoenhuber',
+        nome: 'Herbert',
         cognome: 'Schoenhuber',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
         citta: 'Milano',
@@ -19,15 +21,17 @@ var app = new Vue({
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Claudio',
+        name: 'Claudio Corbellini',
+        nome: 'Claudio',
         cognome: 'Corbellini',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
-        ciita: 'Bologna',
+        citta: 'Bologna',
         telefono: '+39 366 1234567',
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Patrizia',
+        name: 'Patrizia Boni',
+        nome: 'Patrizia',
         cognome: 'Boni',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
         citta: 'Milano',
@@ -35,7 +39,8 @@ var app = new Vue({
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Silvia',
+        name: 'Silvia Simonetti',
+        nome: 'Silvia',
         cognome: 'Simonetti',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
         citta: 'Milano',
@@ -43,7 +48,8 @@ var app = new Vue({
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Alberto',
+        name: 'Alberto Vaiarelli',
+        nome: 'Alberto',
         cognome: 'Vaiarelli',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
         citta: 'Viterbo',
@@ -51,7 +57,8 @@ var app = new Vue({
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Andrea',
+        name: 'Andrea Lenzi',
+        nome: 'Andrea',
         cognome: 'Lenzi',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
         citta: 'Roma',
@@ -59,7 +66,8 @@ var app = new Vue({
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Ernesta',
+        name: 'Ernesta Petrangeli',
+        nome: 'Ernesta',
         cognome: 'Petrangeli',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
         citta: 'Roma',
@@ -67,7 +75,8 @@ var app = new Vue({
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Annalisa',
+        name: 'Annalisa Limosani',
+        nome: 'Annalisa',
         cognome: 'Limosani',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
         citta: 'Firenze',
@@ -75,7 +84,8 @@ var app = new Vue({
         valutazione: '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
       },
       {
-        name: 'Simona',
+        name: 'Simona Monilari',
+        nome: 'Simona',
         cognome: 'Monilari',
         bio: 'Laureato a pieni voti in chirurgia, specializzato in specializzazione e operante a Milano',
         citta: 'Milano',
@@ -85,23 +95,67 @@ var app = new Vue({
     ],
     filtered: [],
     newFilter: '',
+    cityFilter: '',
+    visitFilter: '',
     listaCitta: [],
-    nRisultato: 0
+    cittaDisponibili: [],
+    nRisultato: 0,
+    x: 0,
+    y: 0,
+    eventMemo: ''
   },
   created(){
     this.filtered = this.contacts;
     this.nRisultato = this.filtered.length;
+    this.contacts.forEach((element, i) => {
+      if (!this.cittaDisponibili.includes(element.citta)) {
+        this.cittaDisponibili.push(element.citta)
+      }
+    });
   },
   methods: {
-    filterChat() {
+    doctorFilter(event) {
+      this.eventMemo = event.target.value;
       this.filtered = [];
-      this.newFilter = this.newFilter.charAt(0).toUpperCase() + this.newFilter.slice(1);
-      for (var i = 0; i < this.contacts.length; i++) {
-        if (this.contacts[i].name.includes(this.newFilter)) {
-          this.filtered.push(this.contacts[i]);
-        }
-        this.nRisultato = this.filtered.length;
+      this.contacts.forEach((element, i) => {
+        this.filtered.push(this.contacts[i]);
+      });
+      if (this.cittaDisponibili.includes(this.eventMemo) || this.eventMemo == 'All') {
+        this.cityFilter = event.target.value;
       }
+      if (!this.cittaDisponibili.includes(this.cityFilter)) {
+        this.cityFilter = 'All';
+      }
+      if (this.cityFilter != 'All') {
+        this.x = this.filtered.length;
+        this.y = 0;
+        for (var i = 0; i < this.x; i++) {
+          if (this.filtered[this.y].citta != this.cityFilter) {
+            this.filtered.splice(this.y, 1);
+          }
+          else {
+            this.y++;
+          }
+          console.log( this.filtered.length);
+        }
+      }
+      console.log('lunghezza array intermedia', this.filtered.length);
+      //SEZIONE DEL NOME
+      this.newFilter = this.newFilter.charAt(0).toUpperCase() + this.newFilter.slice(1);
+      if (this.newFilter != '') {
+        console.log('entra', this.filtered.length);
+        this.x = this.filtered.length;
+        this.y = 0;
+        for (var i = 0; i < this.x; i++) {
+          if (this.filtered[this.y].name.includes(this.newFilter)) {
+            this.y++;
+          }
+          else {
+            this.filtered.splice(this.y, 1);
+          }
+        }
+      }
+      this.nRisultato = this.filtered.length;
     }
   }
 });

@@ -46,18 +46,24 @@
         <div class="form-row">
           <div class="form-group col-md-12">
             <label for="inputEmail4">Nome e cognome</label>
-            <input type="text" class="form-control" id="inputEmail4" name="search" placeholder="Nome cognome" @keyup="filterChat" v-model="newFilter">
+            <input type="text" class="form-control" id="inputEmail4" name="search" placeholder="Nome cognome" @keyup="doctorFilter" v-model="newFilter">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputCity">Città</label>
-            <input type="text" class="form-control" id="inputCity" placeholder="Città">
+            <select id="inputCity" class="form-control" @change="doctorFilter($event)">
+              <option selected value="All">Tutta Italia</option>
+              <option v-for="citta in cittaDisponibili" :value="citta">
+                {{ citta }}
+              </option>
+            </select>
           </div>
           <div class="form-group col-md-6">
             <label for="inputState">Tipologia di visita</label>
             <select id="inputState" class="form-control">
-              <option selected>In sede</option>
+              <option selected>In sede o da remoto</option>
+              <option>In sede</option>
               <option>Da remoto</option>
             </select>
           </div>
@@ -80,7 +86,7 @@
     <div class="container-special">
       <div class="card-special" v-for="contact in filtered">
         <img src="img/common/doctor_avatar.jpg" alt="Dottore">
-        <h1>{{ contact.name }}<br>{{ contact.cognome }}</h1>
+        <h1>{{ contact.nome }}<br>{{ contact.cognome }}</h1>
         <br>
         <p>{{ contact.bio }}</p>
         <br>
